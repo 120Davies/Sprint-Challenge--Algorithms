@@ -96,14 +96,18 @@ class SortingRobot:
         """
         Sort the robot's list.
         """
+        # First we turn it on and have it pick up the first item.
         self.set_light_on()
         self.swap_item()
         while self.light_is_on():
+
+            # Sweep right, comparing items and swapping if necessary.
             while self.can_move_right():
                 self.move_right()
                 if self.compare_item() == 1:
                     self.swap_item()
 
+            # At the end of the list, swap item and sweep left.
             if self.can_move_right() == False and self.compare_item() == None:
                 self.swap_item()
                 break
@@ -114,7 +118,7 @@ class SortingRobot:
                     self.move_right()
                     self.swap_item()
                     break
-
+# check
 
 if __name__ == "__main__":
     # Test our your implementation from the command line
